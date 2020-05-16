@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager
+import kotlinx.android.synthetic.main.fragment_third.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,4 +28,19 @@ class ThirdFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_third, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        card_container.layoutManager = CardStackLayoutManager(view.context)
+        card_container.adapter = CardStackAdapter(CARD_TEXT_LIST)
+    }
+
+    companion object {
+        val CARD_TEXT_LIST = listOf<String>(
+            "How do you feel",
+            "How do you feel",
+            "How do you feel",
+            "How do you feel",
+            "How do you feel"
+        )
+    }
 }
