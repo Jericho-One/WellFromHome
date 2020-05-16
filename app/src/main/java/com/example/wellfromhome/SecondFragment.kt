@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wellfromhome.ViewConstants.default_fade_in_duration
 import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_second.*
 
@@ -27,9 +28,13 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        great.fadeIn()
+        goals.fadeIn(2 * default_fade_in_duration)
+
         list.apply {
             layoutManager = LinearLayoutManager(this@SecondFragment.context)
             adapter = TrackAdapter(listOf(ListItem("stuff", false), ListItem("otherStuff", true)))
         }
+        list.fadeIn(3 * default_fade_in_duration)
     }
 }

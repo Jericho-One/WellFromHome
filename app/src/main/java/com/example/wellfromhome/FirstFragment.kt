@@ -1,5 +1,6 @@
 package com.example.wellfromhome
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import android.view.WindowManager
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.wellfromhome.ViewConstants.default_fade_in_duration
 import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
@@ -29,7 +31,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         welcome.fadeIn()
-        what_to_call_you.fadeIn(timeToWaitBeforeFadeIn = 750)
+        what_to_call_you.fadeIn(timeToWaitBeforeFadeIn = 2 * default_fade_in_duration)
         name.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 fab.visibility = if (s.isNullOrBlank()) View.GONE else View.VISIBLE
@@ -44,6 +46,8 @@ class FirstFragment : Fragment() {
         })
 
         fab.setOnClickListener {
+            val prefs = activity?.getSharedPreferences(getString(R.string.pref_file_key), Context.MODE_PRIVATE)?.edit()
+            prefs?.putString(getString(R.string.pref_name), name.text.toString())?.apply()
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }

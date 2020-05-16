@@ -10,4 +10,8 @@
     <string name="welcome">Welcome</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="what_to_call_you">What should we call you?</string>
+    <string name="pref_file_key">PREFS</string>
+    <string name="pref_name">NAME</string>
+    <string name="great">Great!</string>
+    <string name="goals">What would you like to improve about yourself?</string>
 </resources>
