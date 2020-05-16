@@ -1,10 +1,10 @@
 package com.example.wellfromhome
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,11 +28,21 @@ class SecondFragment : Fragment(), TrackAdapter.ItemAction {
         super.onViewCreated(view, savedInstanceState)
 
         great.fadeIn()
+
+        val prefs = activity?.getSharedPreferences(getString(R.string.pref_file_key), Context.MODE_PRIVATE)
+        val name = prefs?.getString("NAME", "Kaleb")
+        goals.text = getString(R.string.goals, name)
+
         goals.fadeIn(2 * default_fade_in_duration)
 
         list.apply {
             layoutManager = LinearLayoutManager(this@SecondFragment.context)
-            adapter = TrackAdapter(listOf(ListItem("stuff", false), ListItem("otherStuff", true)), this@SecondFragment)
+            adapter = TrackAdapter(listOf(
+                ListItem("Productivity", false),
+                ListItem("Work Life Balance", false),
+                ListItem("Form Better Habits", false),
+                ListItem("Mental Health", false)),
+                this@SecondFragment)
         }
 
         list.fadeIn(3 * default_fade_in_duration)
