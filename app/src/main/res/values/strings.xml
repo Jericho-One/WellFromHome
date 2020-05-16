@@ -15,4 +15,9 @@
     <string name="great">Great!</string>
     <string name="goals">What would you like to improve about yourself?</string>
     <string name="productivity">Productivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="journal">Journal</string>
+    <string name="describe_mood">How would you describe your mood right now?</string>
 </resources>

@@ -20,10 +20,9 @@
         android:name="com.example.wellfromhome.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -34,4 +33,9 @@
             app:destination="@id/FirstFragment"
             app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.example.wellfromhome.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" />
 </navigation>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wellfromhome.ViewConstants.default_fade_in_duration
 import kotlinx.android.synthetic.main.fragment_second.*
@@ -37,7 +38,7 @@ class SecondFragment : Fragment(), TrackAdapter.ItemAction {
         list.fadeIn(3 * default_fade_in_duration)
 
         fab.setOnClickListener {
-            Toast.makeText(context, "Not yet implemented", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_SecondFragment_to_thirdFragment)
         }
 
     }
