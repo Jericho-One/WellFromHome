@@ -21,8 +21,12 @@ class TrackAdapter(private val items: List<ListItem>, private val itemAction: It
             val buttonView: MaterialButton = it.findViewById(R.id.button)
             buttonView.text = item.title
             buttonView.isSelected = item.selected
-            buttonView.setOnClickListener { button ->
-                items[position].selected = button.isSelected
+            buttonView.isChecked = item.selected
+            if (buttonView.isChecked) {
+                itemAction?.anyItemSelected(true)
+            }
+            buttonView.setOnClickListener {
+                items[position].selected = buttonView.isChecked
                 itemAction?.run {
                     var anySelected = false
                     items.forEach { listItem ->

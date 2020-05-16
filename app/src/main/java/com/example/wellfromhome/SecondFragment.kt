@@ -33,6 +33,7 @@ class SecondFragment : Fragment(), TrackAdapter.ItemAction {
             layoutManager = LinearLayoutManager(this@SecondFragment.context)
             adapter = TrackAdapter(listOf(ListItem("stuff", false), ListItem("otherStuff", true)), this@SecondFragment)
         }
+
         list.fadeIn(3 * default_fade_in_duration)
 
         fab.setOnClickListener {
