@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 class SplashFragment : Fragment() {
 
     private var splashTimer : CountDownTimer? = null
-    private val minute = 5L
+    private val minute = 3L
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

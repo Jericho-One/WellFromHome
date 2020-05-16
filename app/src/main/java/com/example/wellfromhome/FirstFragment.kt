@@ -30,7 +30,6 @@ class FirstFragment : Fragment() {
 
         welcome.fadeIn()
         what_to_call_you.fadeIn(timeToWaitBeforeFadeIn = 750)
-        name.fadeIn(2 * 750)
         name.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 fab.visibility = if (s.isNullOrBlank()) View.GONE else View.VISIBLE
@@ -45,7 +44,7 @@ class FirstFragment : Fragment() {
         })
 
         fab.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
 }
