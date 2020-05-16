@@ -12,6 +12,7 @@ fun View.fadeIn(timeToWaitBeforeFadeIn: Long = 0L, fadeDuration: Long = default_
             duration = fadeDuration
             fillAfter = true
         })
+        this.visibility = View.VISIBLE
     }, timeToWaitBeforeFadeIn)
 
 }

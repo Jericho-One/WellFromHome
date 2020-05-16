@@ -7,8 +7,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.wellfromhome.ViewConstants.default_fade_in_duration
@@ -32,6 +30,7 @@ class FirstFragment : Fragment() {
 
         welcome.fadeIn()
         what_to_call_you.fadeIn(timeToWaitBeforeFadeIn = 2 * default_fade_in_duration)
+        name.fadeIn(3 * default_fade_in_duration)
         name.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 fab.visibility = if (s.isNullOrBlank()) View.GONE else View.VISIBLE
