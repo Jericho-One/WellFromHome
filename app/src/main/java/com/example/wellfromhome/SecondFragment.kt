@@ -1,21 +1,19 @@
 package com.example.wellfromhome
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wellfromhome.ViewConstants.default_fade_in_duration
-import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class SecondFragment : Fragment(), TrackAdapter.ItemAction {
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +31,17 @@ class SecondFragment : Fragment() {
 
         list.apply {
             layoutManager = LinearLayoutManager(this@SecondFragment.context)
-            adapter = TrackAdapter(listOf(ListItem("stuff", false), ListItem("otherStuff", true)))
+            adapter = TrackAdapter(listOf(ListItem("stuff", false), ListItem("otherStuff", true)), this@SecondFragment)
         }
         list.fadeIn(3 * default_fade_in_duration)
+
+        fab.setOnClickListener {
+            Toast.makeText(context, "Not yet implemented", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    override fun anyItemSelected(isSelected: Boolean) {
+        if (isSelected) fab.show() else fab.hide()
     }
 }

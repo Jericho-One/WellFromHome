@@ -3,7 +3,6 @@ package com.example.wellfromhome
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 
@@ -22,20 +21,28 @@ class TrackAdapter(private val items: List<ListItem>, private val itemAction: It
             val buttonView: MaterialButton = it.findViewById(R.id.button)
             buttonView.text = item.title
             buttonView.isSelected = item.selected
-            holder.itemView.setOnClickListener {
+            buttonView.setOnClickListener { button ->
+                items[position].selected = button.isSelected
                 itemAction?.run {
-                    this.onItemClick(position)
+                    var anySelected = false
+                    items.forEach { listItem ->
+                        if(listItem.selected) {
+                            anySelected = true
+                            return@forEach
+                        }
+                    }
+                    anyItemSelected(anySelected)
                 }
             }
         }
     }
 
     interface ItemAction {
-        fun onItemClick(position: Int)
+        fun anyItemSelected(isSelected: Boolean)
     }
 
 }
 
 class TrackableItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-data class ListItem(val title: String, val selected: Boolean)
+data class ListItem(val title: String, var selected: Boolean)
