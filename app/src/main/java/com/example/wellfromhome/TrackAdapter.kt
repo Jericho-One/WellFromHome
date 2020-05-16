@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.selectable_list_item.view.*
 
-class TrackAdapter(private val items: List<ListItem>) : RecyclerView.Adapter<TrackableItemViewHolder>() {
+class TrackAdapter(private val items: List<ListItem>, private val itemAction: ItemAction? = null) : RecyclerView.Adapter<TrackableItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackableItemViewHolder {
         return TrackableItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.selectable_list_item, parent, false) as View)
     }
@@ -16,11 +16,21 @@ class TrackAdapter(private val items: List<ListItem>) : RecyclerView.Adapter<Tra
     }
 
     override fun onBindViewHolder(holder: TrackableItemViewHolder, position: Int) {
-        holder.itemView.let {
+        holder.itemView.let { it ->
             val item = items[position]
             it.text.text = item.title
             it.checkbox.isChecked = item.selected
+            holder.itemView.setOnClickListener { itemView ->
+                itemView.checkbox.isChecked = !itemView.checkbox.isChecked
+                itemAction?.run {
+                    this.onItemClick(position)
+                }
+            }
         }
+    }
+
+    interface ItemAction {
+        fun onItemClick(position: Int)
     }
 
 }
