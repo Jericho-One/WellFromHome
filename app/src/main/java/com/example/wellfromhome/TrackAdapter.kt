@@ -3,12 +3,13 @@ package com.example.wellfromhome
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.selectable_list_item.view.*
+import com.google.android.material.button.MaterialButton
 
 class TrackAdapter(private val items: List<ListItem>, private val itemAction: ItemAction? = null) : RecyclerView.Adapter<TrackableItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackableItemViewHolder {
-        return TrackableItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.selectable_list_item, parent, false) as View)
+        return TrackableItemViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.button_item, parent, false) as View)
     }
 
     override fun getItemCount(): Int {
@@ -16,12 +17,12 @@ class TrackAdapter(private val items: List<ListItem>, private val itemAction: It
     }
 
     override fun onBindViewHolder(holder: TrackableItemViewHolder, position: Int) {
-        holder.itemView.let { it ->
+        holder.itemView.let {
             val item = items[position]
-            it.text.text = item.title
-            it.checkbox.isChecked = item.selected
-            holder.itemView.setOnClickListener { itemView ->
-                itemView.checkbox.isChecked = !itemView.checkbox.isChecked
+            val buttonView: MaterialButton = it.findViewById(R.id.button)
+            buttonView.text = item.title
+            buttonView.isSelected = item.selected
+            holder.itemView.setOnClickListener {
                 itemAction?.run {
                     this.onItemClick(position)
                 }

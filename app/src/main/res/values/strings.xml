@@ -14,4 +14,5 @@
     <string name="pref_name">NAME</string>
     <string name="great">Great!</string>
     <string name="goals">What would you like to improve about yourself?</string>
+    <string name="productivity">Productivity</string>
 </resources>
