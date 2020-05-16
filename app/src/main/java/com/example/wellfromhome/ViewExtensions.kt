@@ -18,5 +18,5 @@ fun View.fadeIn(timeToWaitBeforeFadeIn: Long = 0L, fadeDuration: Long = default_
 }
 
 object ViewConstants {
-    const val default_fade_in_duration = 10L
+    const val default_fade_in_duration = 750L
 }

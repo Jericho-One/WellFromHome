@@ -6,6 +6,6 @@
         android:radius="16dp"/>
 
     <solid
-        android:color="@color/white"/>
+        android:color="?attr/colorBackgroundFloating"/>
 
 </shape>
