@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+@Suppress("SameParameterValue")
 class FirstFragment : Fragment() {
 
     override fun onCreateView(
@@ -29,8 +30,8 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         welcome_text.fadeIn()
-        what_to_call_you_text.fadeIn(timeToWaitBeforeFadeIn = 2 * default_fade_in_duration)
-        name_input.fadeIn(3 * default_fade_in_duration)
+        what_to_call_you_text.fadeIn(haltTime = 2 * default_fade_in_duration)
+        name_input.fadeIn(haltTime = 3 * default_fade_in_duration)
         name_input.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 fab.visibility = if (s.isNullOrBlank()) View.GONE else View.VISIBLE
