@@ -28,10 +28,10 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        welcome.fadeIn()
-        what_to_call_you.fadeIn(timeToWaitBeforeFadeIn = 2 * default_fade_in_duration)
-        name.fadeIn(3 * default_fade_in_duration)
-        name.addTextChangedListener(object : TextWatcher {
+        welcome_text.fadeIn()
+        what_to_call_you_text.fadeIn(timeToWaitBeforeFadeIn = 2 * default_fade_in_duration)
+        name_input.fadeIn(3 * default_fade_in_duration)
+        name_input.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 fab.visibility = if (s.isNullOrBlank()) View.GONE else View.VISIBLE
             }
@@ -46,7 +46,7 @@ class FirstFragment : Fragment() {
 
         fab.setOnClickListener {
             val prefs = activity?.getSharedPreferences(getString(R.string.pref_file_key), Context.MODE_PRIVATE)?.edit()
-            prefs?.putString(getString(R.string.pref_name), name.text.toString())?.apply()
+            prefs?.putString(getString(R.string.pref_name), name_input.text.toString())?.apply()
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
